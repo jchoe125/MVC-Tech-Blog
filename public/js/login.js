@@ -14,7 +14,7 @@ document.querySelector("#login").addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-            console.log("logged in!")
+            location.href="/profile"
         } else {
             alert("trumpet sound")
         }
@@ -36,7 +36,7 @@ document.querySelector("#signup").addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-            console.log("logged in!")
+            location.href="/profile"
         } else {
             alert("trumpet sound")
         }

@@ -15,7 +15,7 @@ const { User, Blog } = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const sess = {
-  secret: "Super secret secret",
+  secret: process.env.SESSION_SECRET,
   cookie: {
     maxAge: 2 * 60 * 60 * 1000
   },

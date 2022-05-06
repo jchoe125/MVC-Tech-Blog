@@ -7,7 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <header>Welcome to the blog!</header>
+    <header>
+        {{#if loggedIn}}
+            <p>Hello, {{username}}</p>
+            <a href="/profile">profile</a>
+            <a href="/api/users/logout">logout</a>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+    </header>
     <main>
     {{{body}}}
     </main>

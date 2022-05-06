@@ -8,11 +8,15 @@ router.get("/",(req,res)=>{
         const hbsBlogs = blogs.map(blog=>blog.get({plain:true}))
         console.log("==========")
         console.log(hbsBlogs)
-        res.render("home",{blogs:hbsBlogs})
+        const loggedIn = req.session.user?true:false
+        res.render("home",{blogs:hbsBlogs,loggedIn,username:req.session.user?.username})
     })
 })
 
 router.get("/login",(req,res)=>{
+    if(req.session.user){
+        return res.redirect("/profile")
+    }
     res.render("login")
 })
 
@@ -27,6 +31,7 @@ router.get("/profile",(req,res)=>{
         const hbsData = userData.get({plain:true})
         console.log("=======")
         console.log(hbsData);
+        hbsData.loggedIn = req.session.user?true:false
         res.render("profile",hbsData)
     })
 })

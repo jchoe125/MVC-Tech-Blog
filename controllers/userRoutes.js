@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 });
 router.get("/logout",(req,res)=>{
   req.session.destroy();
-  res.json({msg:"logged out!"});
+  res.redirect("/")
 })
 //find one
 router.get("/:id", (req, res) => {
