@@ -1,7 +1,7 @@
 {
   "name": "sess-auth",
   "version": "1.0.0",
-  "description": "",
+  "description": "- [MVC Tech Blog](#mvc-tech-blog)\r   - [Table of Contents](#table-of-contents)\r   - [Description](#description)\r   - [Installation](#installation)\r   - [User Story](#user-story)\r   - [Acceptance Criteria](#acceptance-criteria)\r   - [License](#license)\r   - [Contributing](#contributing)\r   - [Tests](#tests)\r   - [Questions](#questions)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,6 +30,7 @@
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.16",
-    "sequelize": "^6.19.0"
-  }
+    "sequelize": "^6.20.1"
+  },
+  "devDependencies": {}
 }

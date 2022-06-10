@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require("../config/connection");
+const sequelize = require('../config/connection');
 const bcrypt = require("bcrypt")
 
 class User extends Model {}
@@ -24,10 +24,10 @@ User.init({
             return userdata
         }
     },
-    sequelize,
+    sequelize,   
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
 });
 
-module.exports = User
+module.exports=User

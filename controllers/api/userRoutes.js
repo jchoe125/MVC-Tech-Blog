@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {User,Blog,Comment} = require("../../models");
+const {User, Blog, Comment} = require("../../models");
 const bcrypt  = require("bcrypt");
 
 //find all users
@@ -48,6 +48,8 @@ router.post("/", (req, res) => {
       res.status(500).json({ msg: "an error occurred", err });
     });
 });
+
+//login api/users/login
 router.post("/login", (req, res) => {
   User.findOne({
     where:{
@@ -77,7 +79,8 @@ router.put("/:id", (req, res) => {
   User.update(req.body, {
     where: {
       id: req.params.id
-    }
+    },
+    individualHooks: true
   }).then(updatedUser => {
     res.json(updatedUser);
   })
