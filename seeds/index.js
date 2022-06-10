@@ -19,18 +19,42 @@ const users = [
 const blogs = [
     {
         title:"my first blog",
-        body:"Welcome to my blog, im going to do this every day! Like share subscribe",
+        body:"Welcome to my first blog post",
         UserId:1
     },
     {
         title:"my final blog",
-        body:"I cant do this anymore, blogging every day is too hard.  It was a fun half week yall",
+        body:"Welcome to my final blog",
         UserId:1
     },
     {
         title:"Cats: a review",
         body:"I love cats I love every kind of cat.  I want to hug all them but you cant. Cant hug every cat......Cant hug every cat. ",
         UserId:2
+    }
+]
+
+const comments = [
+    {
+        body: "I really like this blog entry",
+        user_id: 1,
+        blog_id: 2
+    },
+    {
+        body: "This blog entry is too deep for me",
+        user_id: 2,
+        blog_id: 3
+        
+    },
+    {
+        body: "I disagree with this blog entry",
+        user_id: 2,
+        blog_id: 1
+    },
+    {
+        body: "Dude, you too? I feel this blog entry in my soul",
+        user_id: 3,
+        blog_id: 2
     }
 ]
 
@@ -41,6 +65,7 @@ const feedMe = async ()=>{
             individualHooks:true
         });
         await Blog.bulkCreate(blogs);
+        await Comment.bulkCreate(comments);
         process.exit(0);
     } catch(err){
         console.log(err)
