@@ -1,8 +1,7 @@
-console.log("login linked1")
-document.querySelector("#login").addEventListener("submit",e=>{
-    e.preventDefault();
+document.querySelector("#login").addEventListener("submit",event=>{
+    event.preventDefault();
     const userObj = {
-        username:document.querySelector("#loginUsername").value,
+        username:document.querySelector("#loginUser").value,
         password:document.querySelector("#loginPassword").value,
     }
     console.log(userObj)
@@ -14,31 +13,10 @@ document.querySelector("#login").addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-            location.href="/profile"
+            console.log("Success! User is logged in")
+            location.href="/dashboard"
         } else {
-            alert("trumpet sound")
-        }
-    })
-})
-
-document.querySelector("#signup").addEventListener("submit",e=>{
-    e.preventDefault();
-    const userObj = {
-        username:document.querySelector("#signupUsername").value,
-        password:document.querySelector("#signupPassword").value,
-    }
-    console.log(userObj)
-    fetch("/api/users/",{
-        method:"POST",
-        body:JSON.stringify(userObj),
-        headers:{
-            "Content-Type":"application/json"
-        }
-    }).then(res=>{
-        if(res.ok){
-            location.href="/profile"
-        } else {
-            alert("trumpet sound")
+            alert("Error - please try again")
         }
     })
 })
