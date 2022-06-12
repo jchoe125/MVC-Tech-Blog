@@ -14,7 +14,7 @@
 This is a basic CMS-style blog site that was created using the MVC (Model, View, Controller) paradigm, where developers can publish their blog posts and comment on other developers' posts as well. In addition to following the MVC paradigm in its architectural structure, this application uses Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication. Instructions to learn how to run this server locally  can be found in the [Installation](#installation) section.
 
 ## Installation
-1.  Navigate to the [GitHub repository]() in your web browser and clone the repo.
+1.  Navigate to the [GitHub repository](https://github.com/jchoe125/MVC-Tech-Blog) in your web browser and clone the repo.
 
 2.  Prior to running the application, the user must have Node.js installed
 
