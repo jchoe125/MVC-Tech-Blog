@@ -70,6 +70,11 @@ WHEN I am idle on the site for more than a set time
 THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 ```
 
+## Screenshots
+![Home page](./assets/Home.JPG)
+![Dashboard](./assets/Dashboard.JPG)
+![Blogpost](./assets/CreatingBlogpost.JPG)
+```
 ## License
 ![Badge](https://img.shields.io/badge/license-MIT-blue)
 Copyright <YEAR> <COPYRIGHT HOLDER>
