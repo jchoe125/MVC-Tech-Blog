@@ -6,24 +6,18 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 require('dotenv').config();
 
-const helpers = require('./util/helper');
-
-require('dotenv').config();
-
-// Sets up the Express App
-// =============================================================
 const app = express();
-const PORT = process.env.PORT || 3000;
-// Requiring our models for syncing
+const PORT = process.env.PORT || 3001;
 
 const { User, Blog, Comment } = require("./models");
-// Sets up the Express app to handle data parsing
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const sess = {
-  secret: "super super secret",
+  secret: process.env.DB_SESSION_SECRET,
   cookie: {
-    maxAge: 2 * 60 * 60 * 1000
+    // user session set to 30 min
+    maxAge: 0.5 * 60 * 60 * 1000
   },
   resave: false,
   saveUninitialized: true,
@@ -32,10 +26,10 @@ const sess = {
   })
 };
 app.use(session(sess));
-// Static directory
+
 app.use(express.static('public'));
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

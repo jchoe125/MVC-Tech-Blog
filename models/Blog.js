@@ -8,7 +8,7 @@ Blog.init({
          type: DataTypes.STRING,
          allowNull:false
     },
-    body: {
+    content: {
         type:DataTypes.TEXT,
         allowNull:false
     }
@@ -19,4 +19,4 @@ Blog.init({
     modelName: 'blog',
 });
 
-module.exports = Blog
+module.exports=Blog

@@ -19,46 +19,50 @@ const users = [
 const blogs = [
     {
         title:"my first blog",
-        body:"Welcome to my first blog post",
-        UserId:1
+        content:"Welcome to my first blog post",
+        UserId: 1
     },
     {
         title:"my final blog",
-        body:"Welcome to my final blog",
-        UserId:1
+        content:"Welcome to my final blog",
+        UserId: 1
     },
     {
         title:"Cats: a review",
-        body:"I love cats I love every kind of cat.  I want to hug all them but you cant. Cant hug every cat......Cant hug every cat. ",
-        UserId:2
-    }
+        content:"I love cats I love every kind of cat.  I want to hug all them but you cant. Cant hug every cat......Cant hug every cat. ",
+        UserId: 2
+    },
+    {
+        title: "Jon is the goat",
+        content: "Fr",
+        userId: 3
+    },
 ]
 
 const comments = [
     {
         body: "I really like this blog entry",
-        user_id: 1,
-        blog_id: 2
+        blog_Id: 2,
+        user_Id: 1
     },
     {
         body: "This blog entry is too deep for me",
-        user_id: 2,
-        blog_id: 3
-        
+        blog_Id: 2,
+        user_Id: 3
     },
     {
         body: "I disagree with this blog entry",
-        user_id: 2,
-        blog_id: 1
+        blog_Id: 2,
+        user_Id: 1
     },
     {
         body: "Dude, you too? I feel this blog entry in my soul",
-        user_id: 3,
-        blog_id: 2
+        blog_Id: 3,
+        user_Id: 2
     }
 ]
 
-const feedMe = async () => {
+const feedMe = async ()=>{
     try {
       await sequelize.sync({ force: true });
       await User.bulkCreate(users, {
