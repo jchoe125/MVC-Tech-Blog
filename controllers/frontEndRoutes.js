@@ -1,18 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const {User, Blog, Comment} = require('../models');
-const helpers = require('../util/helper')
 
 //find all blogs
-router.get("/",(req,res)=>{
-    Blog.findAll().then(blogs=>{
-        console.log(blogs)
+router.get('/', (req, res) => {
+    Blog.findAll({include: [User]}).then(blogs => {
         const hbsBlogs = blogs.map(blog=>blog.get({plain:true}))
-        const loggedIn = req.session.user?true:false
-        res.render("home",{blogs:hbsBlogs,loggedIn,username:req.session.user?.username})
+        const loggedIn = req.session.user?true:false;
+        res.render('home', {blogs:hbsBlogs, loggedIn, username:req.session.user?.username})
     })
 })
 
+//route to redirect user back to dashboard page if not logged in
 router.get("/login",(req,res)=>{
     if(req.session.user){
         return res.redirect("/dashboard")
@@ -20,78 +19,49 @@ router.get("/login",(req,res)=>{
     res.render("login")
 })
 
+//route for users to signup
 router.get("/signup",(req,res)=>{
     res.render("signup")
 })
 
-router.get('/post/:id', (req,res) => {
-    Blog.findByPk(req.params.id).then(blog => {
-        console.log(blog)
-        const hbsBlog = blog.get({plain:true})
-        console.log("==========")
-        console.log(hbsBlog)
-        Comment.findAll({
-            where: {
-              blog_id: hbsBlog.id
-            }
-          }).then(comments => {
-            const hbsComments = comments.map(comment=>{
-                let hbsComment = comment.get({plain:true})
-                return {
-                    body: hbsComment.body,
-                    date: helpers.format_date(hbsComment.date)
-                }
-            })
-            res.render("blog",{
-                title:hbsBlog.title,
-                body:hbsBlog.body,
-                loggedIn: !!req.session.user,
-                username:req.session.user?.username,
-                comments:hbsComments
-            })
-          });
-    })
-})
-
-
-router.get("/login",(req,res)=>{
-    if(req.session.user){
-        return res.redirect("/dashboard")
-    }
-    res.render("login")
-})
-
+//route to redirect user to login page if not logged in and show blog,comment data
 router.get("/dashboard",(req,res)=>{
-    if(!req.session.user){
-        return res.redirect("/login")
+    if(!req.session.user) {
+        return res.redirect('/login')
     }
-    User.findByPk(req.session.user.id,{
-        include:[Blog]
-    }).then(userData=>{
-        console.log(userData);
+    User.findByPk(req.session.user.id, {
+        include: [Blog, Comment]
+    }).then(userData => {
         const hbsData = userData.get({plain:true})
-        console.log("=======")
-        console.log(hbsData);
         hbsData.loggedIn = req.session.user?true:false
-        res.render("dashboard",hbsData)
+        res.render("dashboard", hbsData)
     })
 })
 
-router.get('/post/:id/edit', (req,res) => {
-    Blog.findByPk(req.params.id).then(blog => {
-        console.log(blog)
-        const hbsBlog = blog.get({plain:true})
-        console.log("==========")
+//route to find specific blog
+router.get("/blogs/:id", (req, res) =>{
+    if(!req.session.user) {
+        return res.redirect('/login')
+    }
+    Blog.findByPk(req.params.id,{include:[User, {model: Comment, include: [User]}]})
+    .then(dbBlog => {
+        const hbsBlog = dbBlog.get({plain:true})
+        const loggedIn = req.session.user?true:false;
+        console.log('==============')
         console.log(hbsBlog)
-        
-        res.render("edit",{
-            title:hbsBlog.title,
-            body:hbsBlog.body,
-            loggedIn: !!req.session.user,
-            username:req.session.user?.username,
-            id: req.params.id
-        })
-    })
+        if (dbBlog.userId != req.session.user.id) {
+            return res.render('comment', {hbsBlog, loggedIn, username:req.session.user?.username})
+        }
+        res.render("updateDelete", {hbsBlog, loggedIn, username:req.session.user?.username})
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ msg: "an error occurred", err });
+      });
+})
+
+router.get("*",(req,res)=>{
+    res.redirect("/")
 })
 
 module.exports = router;

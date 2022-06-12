@@ -1,8 +1,34 @@
-document.querySelector("#newBlog").addEventListener("submit",e=>{
-    e.preventDefault()
+var existingBlogs = document.querySelector("#existingBlogs")
+var createNew = document.querySelector("#createNew")
+var newPost = document.querySelector("#newPost")
+var newBlog = document.querySelector('#newBlog')
+
+function hideCreateNew() {
+    createNew.hidden=true;
+}
+
+hideCreateNew();
+
+newPost.addEventListener("submit",event => {
+    event.preventDefault()
+    console.log('click')
+    existingBlogs.hidden=true;
+    newPost.hidden =true;
+    createNew.hidden =false;
+});
+
+newBlog.addEventListener("submit", event => {
+    var title = document.querySelector("#title").value;
+    var content = document.querySelector("#content").value
+    event.preventDefault()
+    console.log('you clicked me')
+    if (!title || !content) {
+        alert('Please enter both title and content')
+        return;
+    }
     const blogObj = {
-        title:document.querySelector("#title").value,
-        body:document.querySelector("#body").value,
+        title: title,
+        content: content,
     }
     fetch("/api/blogs",{
         method:"POST",
@@ -12,9 +38,10 @@ document.querySelector("#newBlog").addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-           location.reload()
+            createNew.setAttribute("hidden", "false")
+            location.reload()
         } else {
-            alert("Error")
+            alert("Error - please try again")
         }
     })
 })

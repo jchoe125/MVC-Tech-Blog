@@ -1,15 +1,32 @@
-<h1>Welcome back {{username}}</h1>
-<h2>All your blogs:</h2>
-<form action="" id="newBlog">
-    <input type="text" id="title" placeholder="title">
-    <textarea id="body" cols="30" rows="10"></textarea>
-    <button>Submit</button>
-</form>
-{{#each Blogs}}
-    <h3>{{title}}</h3>
-    <p>{{body}}</p>
-    <button>delete</button>
-    <hr>
+<h1>Dashboard</h1>
+<section id="existingBlogs">
+{{#each blogs}}
+  <section class="card">
+      <a href="/blogs/{{id}}" class="card-body">
+        <h3 class="card-title">{{title}}</h3> 
+        <h5>Posted on {{createdAt}}</h5>
+        <p class="card-text">{{content}}</p>
+    </a>
+  </section>
 {{/each}}
-
-<script src="/js/profile.js"></script>
+</section>
+<section id="createNew" class="card text-center">
+  <div class="card-body">
+  <h3 class="card-title">Create New Post</h3>
+  <form id="newBlog">
+    <div class="card-text"></div>
+      <label for="title">Title</label><br>
+      <input type="text" id="title" placeholder="title">
+    </div>
+    <div class="card-text"></div>
+      <label for="content">Content</label>
+    <textarea id="content" placeholder="content"></textarea>
+    </div>
+    <button id="create">Create</button>
+</form>
+</div>
+</section>
+<form id="newPost">
+    <button>+ New Post</button>
+</form>
+<script src="/js/dashboard.js"></script>

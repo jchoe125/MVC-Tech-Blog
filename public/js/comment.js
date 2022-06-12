@@ -12,10 +12,10 @@ document.querySelector("#newComment").addEventListener("submit",event=>{
         }
     }).then(res=>{
         if(res.ok){
-            console.log("Success! comment posted")
+            console.log("comment posted")
             location.reload()
         } else {
-            alert("Error - please try again")
+            alert("please try again")
         }
     })
 })

@@ -1,5 +1,5 @@
 {
-  "name": "sess-auth",
+  "name": "mvc-tech-blog",
   "version": "1.0.0",
   "description": "- [MVC Tech Blog](#mvc-tech-blog)\r   - [Table of Contents](#table-of-contents)\r   - [Description](#description)\r   - [Installation](#installation)\r   - [User Story](#user-story)\r   - [Acceptance Criteria](#acceptance-criteria)\r   - [License](#license)\r   - [Contributing](#contributing)\r   - [Tests](#tests)\r   - [Questions](#questions)",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rufasa85/sess-auth.git"
+    "url": "git+https://github.com/jchoe125/MVC-Tech-Blog.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Joe Choe",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Rufasa85/sess-auth/issues"
+    "url": "https://github.com/jchoe125/MVC-Tech-Blog/issues"
   },
-  "homepage": "https://github.com/Rufasa85/sess-auth#readme",
+  "homepage": "https://github.com/jchoe125/MVC-Tech-Blog#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.3",
