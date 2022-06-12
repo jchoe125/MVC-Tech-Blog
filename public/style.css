@@ -10,7 +10,7 @@ body {
 }
 
 header, h1 {
-    background-color: #294053;
+    background-color: #5c2c26;
     padding: 10px;
     color: white !important;
     opacity: 0.8;
@@ -23,7 +23,7 @@ header a {
 }
 
 .card-title {
-    background-color: #2d87d6;
+    background-color: #a55119;
     color: white;
     padding: 5px;
 }
