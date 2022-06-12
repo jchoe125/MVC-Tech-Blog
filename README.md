@@ -1,8 +1,6 @@
 # MVC Tech Blog
 
 ## Table of Contents
-- [MVC Tech Blog](#mvc-tech-blog)
-  - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Installation](#installation)
   - [User Story](#user-story)
@@ -73,8 +71,7 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 ```
 
 ## License
-![MIT license](https://img.shields.io/badge/license-MIT-brightgreen)
-[MIT license](https://opensource.org/licenses/MIT)
+![Badge](https://img.shields.io/badge/license-MIT-blue)
 Copyright <YEAR> <COPYRIGHT HOLDER>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -87,7 +84,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 I would love to expand this project by adding cooler styling and additional features such as being able to post different content types and being able to search users or posts.  A hashtag feature could also be very handy and improve user experience.  Before contributing please read the entire README.md file and contact me via GitHub.  My GitHub info can be found in the final section of the README.md [Questions](#questions).
 
 ## Tests
-To test this application you can run the server locally or navigate to the [Heroku Deployment](https://powerful-wave-29911.herokuapp.com/)  and test the functionality of the app.  You can even check the raw json data by entering the endpoints: "/api/users", "/api/posts", and "/api/comments" in your browser.  You will then be able to cross-reference the raw data with the data presented on the blog pages.  
+To test this application you can run the server locally or navigate to the [Heroku Deployment](https://jcmvctechblog.herokuapp.com/)  and test the functionality of the app.  You can even check the raw json data by entering the endpoints: "/api/users", "/api/posts", and "/api/comments" in your browser.  You will then be able to cross-reference the raw data with the data presented on the blog pages.  
 
 To adjust the login session time limit as instructed in the [Usage](#usage) section go to the server.js file that is in the root directory.  Go the section where the session variable is defined "const sess = {...}" and in the sess object you will find a "cookie" object property.  Within that cookie object is an "expires" property.  The expires property take an integer argument calculated in milliseconds.  For use on the deployed app I have the expires property set to 2 hours, but you can set it to even lower to test the auto-logout feature.
 
