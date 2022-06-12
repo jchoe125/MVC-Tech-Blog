@@ -1,5 +1,6 @@
 document.querySelector("#login").addEventListener("submit",event=>{
     event.preventDefault();
+    console.log(event.target)
     const userObj = {
         username:document.querySelector("#loginUser").value,
         password:document.querySelector("#loginPassword").value,
@@ -7,7 +8,7 @@ document.querySelector("#login").addEventListener("submit",event=>{
     console.log(userObj)
     fetch("/api/users/login",{
         method:"POST",
-        body:JSON.stringify(userObj),
+        // body:JSON.stringify(userObj),
         headers:{
             "Content-Type":"application/json"
         }
