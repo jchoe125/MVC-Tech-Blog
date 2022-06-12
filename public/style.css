@@ -10,7 +10,7 @@ body {
 }
 
 header, h1 {
-    background-color: #355C7D;
+    background-color: #294053;
     padding: 10px;
     color: white !important;
 }
@@ -22,7 +22,7 @@ header a {
 }
 
 .card-title {
-    background-color: #355C7D;
+    background-color: #2d87d6;
     color: white;
     padding: 5px;
 }

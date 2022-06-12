@@ -52,7 +52,7 @@ router.get("/blogs/:id", (req, res) =>{
         if (dbBlog.userId != req.session.user.id) {
             return res.render('comment', {hbsBlog, loggedIn, username:req.session.user?.username})
         }
-        res.render("updateDelete", {hbsBlog, loggedIn, username:req.session.user?.username})
+        res.render("edit", {hbsBlog, loggedIn, username:req.session.user?.username})
       })
       .catch(err => {
         console.log(err);
